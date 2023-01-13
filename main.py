@@ -4,8 +4,8 @@ import pygame
 if __name__ == '__main__':
     pygame.init()
     size = (700, 500)
-    screen_height = size[0]
-    screen_width = size[1]
+    screen_width = size[0]
+    screen_height= size[1]
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("Heli")
     clock= pygame.time.Clock()
@@ -28,6 +28,10 @@ if __name__ == '__main__':
     flying_up = False
     heading_right = True
 
+    background_x = 0
+
+
+
     platforms = [pygame.Rect(0, 0, 40, 500),
                  pygame.Rect(0, 450, 500, 40),
                  pygame.Rect(100, 100, 300, 40),
@@ -43,6 +47,7 @@ if __name__ == '__main__':
             if dy>10:
                 dy=10
 
+
         x = x+dx
         heli_rect = pygame.Rect(x,y,screen_width//10,screen_height//12)
         for platform in platforms:
@@ -56,6 +61,12 @@ if __name__ == '__main__':
             if heli_rect.colliderect(platform):
                 y = y-dy
                 dy=0
+
+        if x + background_x > size[0]*3/4:
+            background_x = size[0]*3/4-x
+
+        if x+background_x< size[0]*1/4:
+            background_x= size[0]*1/4-x
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -88,18 +99,19 @@ if __name__ == '__main__':
                         dy = 0
 
         screen.fill((255,255,255))
-        screen.blit(background,(0,0))
+        screen.blit(background,(background_x % size[0],0))
+        screen.blit(background, (background_x % size[0] - size[0], 0))
 
 
         # pygame.draw.rect(screen,(100,100,100), heli_rect)
         for platform in platforms:
-            pygame.draw.rect(screen, (0,120,0), platform)
+            pygame.draw.rect(screen, (0,120,0), (platform.x + background_x, platform.y, platform.width, platform.height))
 
 
         if heading_right:
-            screen.blit(heli_right,(x,y))
+            screen.blit(heli_right,(x+background_x,y))
         else:
-            screen.blit(heli_left, (x, y))
+            screen.blit(heli_left, (x+ background_x, y))
         pygame.display.flip()
         clock.tick(25)
 
