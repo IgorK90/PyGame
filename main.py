@@ -12,10 +12,10 @@ if __name__ == '__main__':
 
 
     heli_right = pygame.image.load("heli_right.png")
-    heli_right = pygame.transform.scale(heli_right,(64,64))
+    heli_right = pygame.transform.scale(heli_right,(screen_width//10,screen_height//10))
 
     heli_left = pygame.image.load("heli_left.png")
-    heli_left = pygame.transform.scale(heli_left,(64,64))
+    heli_left = pygame.transform.scale(heli_left,(screen_width//10,screen_height//10))
 
     background = pygame.image.load("plx-5.png")
     background = pygame.transform.scale(background,(700,500))
@@ -28,14 +28,35 @@ if __name__ == '__main__':
     flying_up = False
     heading_right = True
 
+    platforms = [pygame.Rect(0, 0, 40, 500),
+                 pygame.Rect(0, 450, 500, 40),
+                 pygame.Rect(100, 100, 300, 40),
+                 pygame.Rect(500, 200, 100, 40),]
     game_over = False
     while not game_over:
-        x = x+dx
-        y = y+dy
         if flying_up:
             dy = dy-1
+            if dy<-10:
+                dy=-10
         else:
-            dy = dy+1
+            dy = dy+0.5
+            if dy>10:
+                dy=10
+
+        x = x+dx
+        heli_rect = pygame.Rect(x,y,screen_width//10,screen_height//12)
+        for platform in platforms:
+            if heli_rect.colliderect(platform):
+                x = x-dx
+
+
+        y = y+dy
+        heli_rect = pygame.Rect(x,y,screen_width//10,screen_height//12)
+        for platform in platforms:
+            if heli_rect.colliderect(platform):
+                y = y-dy
+                dy=0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_over = True
@@ -44,15 +65,15 @@ if __name__ == '__main__':
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    dx = -10
+                    dx = -7
                     heading_right = False
                 if event.key == pygame.K_RIGHT:
-                    dx = 10
+                    dx = 7
                     heading_right = True
                 if event.key == pygame.K_UP:
                     flying_up = True
                 if event.key == pygame.K_DOWN:
-                    dy = 10
+                    dy = 7
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     if dx<0:
@@ -68,12 +89,19 @@ if __name__ == '__main__':
 
         screen.fill((255,255,255))
         screen.blit(background,(0,0))
+
+
+        # pygame.draw.rect(screen,(100,100,100), heli_rect)
+        for platform in platforms:
+            pygame.draw.rect(screen, (0,120,0), platform)
+
+
         if heading_right:
             screen.blit(heli_right,(x,y))
         else:
             screen.blit(heli_left, (x, y))
         pygame.display.flip()
-        clock.tick(10)
+        clock.tick(25)
 
     pygame.quit()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
