@@ -28,33 +28,39 @@ if __name__ == '__main__':
 
     background_x = 0
 
-    level = [[1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-             [1,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-             [1,0,0,7,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,],
-             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,],
-             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,],
-             [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-             [1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
-             [1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
-             [1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+    level = [[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, ],
+             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 1, 1, 1, ],
+             [1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+             [1, 0, 0, 7, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+             [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0, 0, ],
+             [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, ],
+             [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, ],
+             [1, 0, 0, 0, 1, 1, 2, 0, 0, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, ],
+             [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ],
+             [1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 2, 0, 1, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ],
              ]
     platforms = list()
-    brick_size= size[1]//11
+    platforms2 = list()
+    brick_size = size[1] // 11
     for i in range(len(level)):
         for j in range(len(level[i])):
-            if level[i][j]==1:
-                platforms.append(pygame.Rect(j*brick_size, i*brick_size, brick_size,brick_size))
-            if level[i][j]==7:
-                x,y = j*brick_size, i*brick_size
-
-
+            if level[i][j] == 1:
+                platforms.append(pygame.Rect(j * brick_size, i * brick_size, brick_size, brick_size))
+            if level[i][j] == 2:
+                platforms2.append(pygame.Rect(j * brick_size, i * brick_size, brick_size, brick_size))
+            if level[i][j] == 7:
+                x, y = j * brick_size, i * brick_size
 
     # platforms = [pygame.Rect(0, 0, 40, 500),
     #              pygame.Rect(0, 450, 500, 40),
     #              pygame.Rect(100, 100, 300, 40),
     #              pygame.Rect(500, 200, 100, 40), ]
+
+    fire = False
+    fire_x, fire_y = 50, 50
+    fire_dx, fire_dy = 10, 0
+    fire_counter = 0
 
     game_over = False
     while not game_over:
@@ -69,13 +75,13 @@ if __name__ == '__main__':
 
         x = x + dx
         heli_rect = pygame.Rect(x, y, screen_width // 10, screen_width // 12)
-        for platform in platforms:
+        for platform in platforms+platforms2:
             if heli_rect.colliderect(platform):
                 x = x - dx
 
         y = y + dy
         heli_rect = pygame.Rect(x, y, screen_width // 10, screen_width // 12)
-        for platform in platforms:
+        for platform in platforms + platforms2:
             if heli_rect.colliderect(platform):
                 y = y - dy
                 dy = 0
@@ -85,6 +91,21 @@ if __name__ == '__main__':
 
         if x + background_x < size[0] * 1 / 4:
             background_x = size[0] * 1 / 4 - x
+
+        if fire:
+            fire_x += fire_dx
+            fire_y += fire_dy
+            fire_counter-=1
+            if fire_counter<=0:
+                fire = False
+            for platform in platforms:
+                if platform.collidepoint(fire_x, fire_y):
+                    fire = False
+            for platform in platforms2:
+                if platform.collidepoint(fire_x, fire_y):
+                    fire = False
+                    platforms2.remove(platform)
+                    break
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -103,6 +124,18 @@ if __name__ == '__main__':
                     flying_up = True
                 if event.key == pygame.K_DOWN:
                     dy = 7
+                if event.key == pygame.K_SPACE:
+                    # if fire and fire_x > screen_width or fire_x<1:
+                    #     fire = False
+                    if not fire:
+                        fire_x = x+screen_width//20
+                        fire_y = y+screen_width//20
+                        if heading_right:
+                            fire_dx = 10
+                        else:
+                            fire_dx = -10
+                        fire_counter = 30
+                        fire = True
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     if dx < 0:
@@ -124,11 +157,18 @@ if __name__ == '__main__':
         for platform in platforms:
             pygame.draw.rect(screen, (0, 120, 0),
                              (platform.x + background_x, platform.y, platform.width, platform.height))
+        for platform in platforms2:
+            pygame.draw.rect(screen, (150, 250, 150),
+                             (platform.x + background_x, platform.y, platform.width, platform.height))
 
         if heading_right:
             screen.blit(heli_right, (x + background_x, y))
         else:
             screen.blit(heli_left, (x + background_x, y))
+
+        if fire:
+            pygame.draw.circle(screen, (120, 0, 0), (fire_x + background_x, fire_y), 5)
+
         pygame.display.flip()
         clock.tick(25)
 
