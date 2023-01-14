@@ -95,8 +95,8 @@ if __name__ == '__main__':
         if fire:
             fire_x += fire_dx
             fire_y += fire_dy
-            fire_counter-=1
-            if fire_counter<=0:
+            fire_counter -= 1
+            if fire_counter <= 0:
                 fire = False
             for platform in platforms:
                 if platform.collidepoint(fire_x, fire_y):
